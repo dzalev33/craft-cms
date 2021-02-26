@@ -1,0 +1,17 @@
+dateModified: 1614338182
+email:
+  fromEmail: admin@test.com
+  fromName: 'test craft'
+  transportType: craft\mail\transportadapters\Sendmail
+system:
+  edition: solo
+  live: true
+  name: 'test craft'
+  schemaVersion: 3.6.4
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
