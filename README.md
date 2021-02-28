@@ -3,18 +3,15 @@ Get data from Yelp API
 
 ## Project setup
 
--when you clone the project, run `composer-install` to get the vendor files.
--run `./craft setup` to build it locally
+- when you clone the project, run `composer-install` to get the vendor files.
+- run `./craft setup` to build it locally
+- Copy the `YELP_API_KEY` from the `.env.example` file so you can have access to the API
 
 
 
 ## Requirements
 
 This module requires Craft CMS 3.0.0-RC1 or later.
-
-To be able to access the API, you will need an API Key.
-Please add `YELP_API_KEY` in your `.env` file with your own API Key,
-that you can generate from [here](https://www.yelp.com/developers/documentation/v3/authentication).
 
 ## Installation
 
