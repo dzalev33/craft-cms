@@ -12,6 +12,7 @@ namespace modules\yelpapimodule;
 
 use modules\yelpapimodule\assetbundles\yelpapimodule\YelpApiModuleAsset;
 use modules\yelpapimodule\variables\YelpApiModuleVariable;
+use modules\yelpapimodule\services\YelpApiModuleService as YelpApiModuleServiceService;
 
 use Craft;
 use craft\events\RegisterTemplateRootsEvent;
@@ -37,6 +38,7 @@ use yii\base\Module;
  * @author    Stefan Salev
  * @package   YelpApiModule
  * @since     1.0.0
+ * @property  YelpApiModuleServiceService $yelpApiModuleService
  *
  */
 class YelpApiModule extends Module
@@ -66,7 +68,7 @@ class YelpApiModule extends Module
         // Translation category
         $i18n = Craft::$app->getI18n();
         /** @noinspection UnSafeIsSetOverArrayInspection */
-        if (!isset($i18n->translations[$id]) && !isset($i18n->translations[$id.'*'])) {
+        if (!isset($i18n->translations[$id]) && !isset($i18n->translations[$id . '*'])) {
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
@@ -78,7 +80,7 @@ class YelpApiModule extends Module
 
         // Base template directory
         Event::on(View::class, View::EVENT_REGISTER_CP_TEMPLATE_ROOTS, function (RegisterTemplateRootsEvent $e) {
-            if (is_dir($baseDir = $this->getBasePath().DIRECTORY_SEPARATOR.'templates')) {
+            if (is_dir($baseDir = $this->getBasePath() . DIRECTORY_SEPARATOR . 'templates')) {
                 $e->roots[$this->id] = $baseDir;
             }
         });
@@ -115,7 +117,7 @@ class YelpApiModule extends Module
                         Craft::$app->getView()->registerAssetBundle(YelpApiModuleAsset::class);
                     } catch (InvalidConfigException $e) {
                         Craft::error(
-                            'Error registering AssetBundle - '.$e->getMessage(),
+                            'Error registering AssetBundle - ' . $e->getMessage(),
                             __METHOD__
                         );
                     }
@@ -134,24 +136,24 @@ class YelpApiModule extends Module
             }
         );
 
-/**
- * Logging in Craft involves using one of the following methods:
- *
- * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
- * Craft::info(): record a message that conveys some useful information.
- * Craft::warning(): record a warning message that indicates something unexpected has happened.
- * Craft::error(): record a fatal error that should be investigated as soon as possible.
- *
- * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
- *
- * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
- * the category to the method (prefixed with the fully qualified class name) where the constant appears.
- *
- * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
- * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
- *
- * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
- */
+        /**
+         * Logging in Craft involves using one of the following methods:
+         *
+         * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
+         * Craft::info(): record a message that conveys some useful information.
+         * Craft::warning(): record a warning message that indicates something unexpected has happened.
+         * Craft::error(): record a fatal error that should be investigated as soon as possible.
+         *
+         * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
+         *
+         * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
+         * the category to the method (prefixed with the fully qualified class name) where the constant appears.
+         *
+         * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
+         * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
+         *
+         * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
+         */
         Craft::info(
             Craft::t(
                 'yelp-api-module',

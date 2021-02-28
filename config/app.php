@@ -20,6 +20,11 @@ return [
     'modules' => [
         'yelp-api-module' => [
             'class' => \modules\yelpapimodule\YelpApiModule::class,
+            'components' => [
+                'yelpApiModuleService' => [
+                    'class' => \modules\yelpapimodule\services\YelpApiModuleService::class,
+                ],
+            ],
         ],
     ],
     'bootstrap' => ['yelp-api-module'],
