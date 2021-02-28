@@ -8,11 +8,6 @@ Get data from Yelp API
 - Copy the `YELP_API_KEY` from the `.env.example` file so you can have access to the API
 
 
-
-## Requirements
-
-This module requires Craft CMS 3.0.0-RC1 or later.
-
 ## Installation
 
 To install the module, follow these instructions.
