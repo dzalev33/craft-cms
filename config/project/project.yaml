@@ -1,8 +1,21 @@
-dateModified: 1614338182
+dateModified: 1614461918
 email:
   fromEmail: admin@test.com
   fromName: 'test craft'
   transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  fetch:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  yelp-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
 system:
   edition: solo
   live: true

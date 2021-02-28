@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: home
+name: Home
+propagationMethod: all
+siteSettings:
+  2d1c7591-8e99-46ed-ad4a-8a811c902140:
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: __home__
+type: single
