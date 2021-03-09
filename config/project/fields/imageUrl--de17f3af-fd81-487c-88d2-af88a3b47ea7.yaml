@@ -1,0 +1,14 @@
+contentColumnType: string(255)
+fieldGroup: ed4d6d49-d7ee-4a92-8fab-c0bae7b23190
+handle: imageUrl
+instructions: ''
+name: image_url
+searchable: false
+settings:
+  maxLength: '255'
+  placeholder: null
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

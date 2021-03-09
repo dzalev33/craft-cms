@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: ed4d6d49-d7ee-4a92-8fab-c0bae7b23190
+handle: alias
+instructions: ''
+name: alias
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: '1'
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

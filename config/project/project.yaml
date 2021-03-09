@@ -1,9 +1,17 @@
-dateModified: 1614461918
+dateModified: 1615124728
 email:
   fromEmail: admin@test.com
   fromName: 'test craft'
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  feed-me:
+    edition: standard
+    enabled: true
+    schemaVersion: 4.3.0
   fetch:
     edition: standard
     enabled: true
@@ -20,7 +28,7 @@ system:
   edition: solo
   live: true
   name: 'test craft'
-  schemaVersion: 3.6.4
+  schemaVersion: 3.6.6
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

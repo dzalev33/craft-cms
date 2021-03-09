@@ -10,11 +10,10 @@
 
 namespace modules\yelpapimodule\services;
 
+use GuzzleHttp\Client;
 use modules\yelpapimodule\YelpApiModule;
-
 use Craft;
 use craft\base\Component;
-
 use OAuthToken;
 use yii\base\Exception;
 use GuzzleHttp;
@@ -28,52 +27,45 @@ use GuzzleHttp;
  */
 class YelpApiModuleService extends Component
 {
+    private $url = '';
     public $apiHost;
     public $location;
     public $yelpApiKey;
     public $host;
+    public $siteBaseUrl;
 
     public function init()
     {
         $this->yelpApiKey = getenv('YELP_API_KEY');
-        $this->apiHost = 'https://api.yelp.com/';
+        $this->siteBaseUrl =getenv('PRIMARY_SITE_URL');
+        $this->apiHost ='api/restaurants.json';
         $this->location = 'Melbourne';
         $this->host = 'v3/businesses/search?location=';
     }
 
-    /**
-     *
-     * @return mixed
-     */
-    public function MakeRequest()
-    {
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->getSearchResultsByLocationPath(),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FAILONERROR => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                "Accept: application/json",
-                "Authorization: Bearer $this->yelpApiKey ",
-            ),
-        ));
-        $response = curl_exec($curl);
-        if (curl_errno($curl)) {
-            $error_msg = curl_error($curl);
-        }
-        curl_close($curl);
+    public function url( $baseUrl = '',$apiHost = '' ){
+        $this->url = $baseUrl;
+        $this->apiHost = $apiHost;
 
-        if (isset($error_msg)) {
-            return $error_msg;
-        }
-
-        return $response;
+        return $baseUrl . $apiHost;
     }
 
-    public function getSearchResultsByLocationPath()
-    {
-        return $this->apiHost . $this->host . $this->location;
+    public function getRequest(){
+        $siteBaseUrl = $this->siteBaseUrl;
+        $apiHost = $this->apiHost;
+        $restaurantsUrl = $this->url($siteBaseUrl,  $apiHost);
+
+        $client = new Client();
+        $response = $client->request('GET', $restaurantsUrl, [
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function getData(){
+
+        $responseBody = $this->getRequest();
+
+        return json_encode($responseBody);
     }
 }

@@ -30,8 +30,8 @@ use GuzzleHttp;
 class YelpApiModuleVariable
 {
 
-    public function getData()
+    public function getRestaurants()
     {
-        return YelpApiModule::$instance->yelpApiModuleService->MakeRequest();
+        return YelpApiModule::$instance->yelpApiModuleService->getData();
     }
 }

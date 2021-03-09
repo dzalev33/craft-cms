@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: restaurants
+name: Restaurants
+propagationMethod: all
+siteSettings:
+  2d1c7591-8e99-46ed-ad4a-8a811c902140:
+    enabledByDefault: true
+    hasUrls: true
+    template: restaurants/_entry
+    uriFormat: 'restaurants/{slug}'
+type: channel

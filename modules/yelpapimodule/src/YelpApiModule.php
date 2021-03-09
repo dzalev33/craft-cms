@@ -10,6 +10,8 @@
 
 namespace modules\yelpapimodule;
 
+use craft\events\RegisterUrlRulesEvent;
+use craft\web\UrlManager;
 use modules\yelpapimodule\assetbundles\yelpapimodule\YelpApiModuleAsset;
 use modules\yelpapimodule\variables\YelpApiModuleVariable;
 use modules\yelpapimodule\services\YelpApiModuleService as YelpApiModuleServiceService;
@@ -104,6 +106,7 @@ class YelpApiModule extends Module
      */
     public function init()
     {
+
         parent::init();
         self::$instance = $this;
 
@@ -124,7 +127,23 @@ class YelpApiModule extends Module
                 }
             );
         }
+        // Register our site routes
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['siteActionTrigger1'] = 'yelp-api-module/default';
+            }
+        );
 
+        // Register our CP routes
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_CP_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['cpActionTrigger1'] = 'yelp-api-module/default/do-something';
+            }
+        );
         // Register our variables
         Event::on(
             CraftVariable::class,
