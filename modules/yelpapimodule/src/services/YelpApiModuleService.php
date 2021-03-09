@@ -39,8 +39,6 @@ class YelpApiModuleService extends Component
         $this->yelpApiKey = getenv('YELP_API_KEY');
         $this->siteBaseUrl =getenv('PRIMARY_SITE_URL');
         $this->apiHost ='api/restaurants.json';
-        $this->location = 'Melbourne';
-        $this->host = 'v3/businesses/search?location=';
     }
 
     public function url( $baseUrl = '',$apiHost = '' ){

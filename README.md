@@ -7,6 +7,7 @@ Get data from Yelp API
 - run `./craft setup` to build it locally
 - Copy the `YELP_API_KEY` from the `.env.example` file so you can have access to the API
 
+- to get the config files please run `php craft project-config/apply`
 ## Yelp API Overview
 
 This is a simple get request to the Yelp API that gets restaurants based 
