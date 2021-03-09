@@ -56,8 +56,7 @@ class YelpApiModuleService extends Component
         $restaurantsUrl = $this->url($siteBaseUrl,  $apiHost);
 
         $client = new Client();
-        $response = $client->request('GET', $restaurantsUrl, [
-        ]);
+        $response = $client->request('GET', $restaurantsUrl);
 
         return json_decode($response->getBody(), true);
     }
